@@ -1,0 +1,117 @@
+<!-- Успешная отправка -->
+<div *ngIf="submitSuccess" class="alert alert-success text-center p-5">
+  <h3>Спасибо за заказ!</h3>
+  <p>Мы свяжемся с вами в ближайшее время.</p>
+</div>
+
+<!-- Форма заказа -->
+<div *ngIf="!submitSuccess">
+  <h2 class="text-center mb-4">Оформление заказа</h2>
+
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="row g-3">
+
+    <!-- Имя -->
+    <div class="col-md-6">
+      <label class="form-label">Имя *</label>
+      <input type="text" class="form-control" formControlName="name">
+      <div class="text-danger small"
+           *ngIf="orderForm.get('name')?.touched && orderForm.get('name')?.errors?.['required']">
+        Имя обязательно
+      </div>
+      <div class="text-danger small"
+           *ngIf="orderForm.get('name')?.touched && orderForm.get('name')?.errors?.['pattern']">
+        Только буквы
+      </div>
+    </div>
+
+    <!-- Фамилия -->
+    <div class="col-md-6">
+      <label class="form-label">Фамилия *</label>
+      <input type="text" class="form-control" formControlName="last_name">
+      <div class="text-danger small"
+           *ngIf="orderForm.get('last_name')?.touched && orderForm.get('last_name')?.errors?.['required']">
+        Фамилия обязательна
+      </div>
+      <div class="text-danger small"
+           *ngIf="orderForm.get('last_name')?.touched && orderForm.get('last_name')?.errors?.['pattern']">
+        Только буквы
+      </div>
+    </div>
+
+    <!-- Телефон -->
+    <div class="col-md-6">
+      <label class="form-label">Телефон *</label>
+      <input type="tel" class="form-control" formControlName="phone" placeholder="+71234567890">
+      <div class="text-danger small"
+           *ngIf="orderForm.get('phone')?.touched && orderForm.get('phone')?.errors?.['required']">
+        Телефон обязателен
+      </div>
+      <div class="text-danger small"
+           *ngIf="orderForm.get('phone')?.touched && orderForm.get('phone')?.errors?.['invalidPhone']">
+        Введите 11 цифр, можно начать с +
+      </div>
+    </div>
+
+    <!-- Страна -->
+    <div class="col-md-6">
+      <label class="form-label">Страна *</label>
+      <input type="text" class="form-control" formControlName="country">
+      <div class="text-danger small"
+           *ngIf="orderForm.get('country')?.touched && orderForm.get('country')?.invalid">
+        Страна обязательна
+      </div>
+    </div>
+
+    <!-- Индекс -->
+    <div class="col-md-6">
+      <label class="form-label">Индекс * (6 цифр)</label>
+      <input type="text" class="form-control" formControlName="zip">
+      <div class="text-danger small"
+           *ngIf="orderForm.get('zip')?.touched && orderForm.get('zip')?.errors?.['required']">
+        Индекс обязателен
+      </div>
+      <div class="text-danger small"
+           *ngIf="orderForm.get('zip')?.touched && orderForm.get('zip')?.errors?.['pattern']">
+        Только 6 цифр
+      </div>
+    </div>
+
+    <!-- Адрес -->
+    <div class="col-md-6">
+      <label class="form-label">Адрес *</label>
+      <input type="text" class="form-control" formControlName="address">
+      <div class="text-danger small"
+           *ngIf="orderForm.get('address')?.touched && orderForm.get('address')?.errors?.['required']">
+        Адрес обязателен
+      </div>
+      <div class="text-danger small"
+           *ngIf="orderForm.get('address')?.touched && orderForm.get('address')?.errors?.['pattern']">
+        Буквы, цифры, пробелы, дефис, слеш
+      </div>
+    </div>
+
+    <!-- Товар (не редактируется) -->
+    <div class="col-md-12">
+      <label class="form-label">Товар</label>
+      <input type="text" class="form-control bg-light" formControlName="product" readonly>
+    </div>
+
+    <!-- Комментарий -->
+    <div class="col-md-12">
+      <label class="form-label">Комментарий к заказу</label>
+      <textarea class="form-control" formControlName="comment" rows="3"></textarea>
+    </div>
+
+    <!-- Кнопка отправки -->
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary btn-lg" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Отправка...' : 'Отправить заказ' }}
+      </button>
+
+      <!-- Ошибка отправки -->
+      <div *ngIf="submitError" class="alert alert-danger mt-3">
+        Произошла ошибка. Попробуйте еще раз.
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,45 @@
+<header data-bs-theme="light">
+  <nav class="navbar navbar-expand-md navbar-light bg-light mb-5">
+    <div class="container-fluid">
+      <!-- Логотип / Название сайта -->
+      <a class="navbar-brand fw-bold text-primary" routerLink="/">
+        Чайная Лавка
+      </a>
+
+      <!-- Кнопка для мобильных устройств -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Меню навигации -->
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              Главная
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="loggedState">
+            <a class="nav-link" routerLink="/catalog" routerLinkActive="active">
+              Каталог
+            </a>
+          </li>
+        </ul>
+
+        <div class="d-flex">
+          <button *ngIf="!loggedState"
+                  class="btn btn-outline-primary"
+                  (click)="login()">
+            Войти
+          </button>
+
+          <div *ngIf="loggedState" class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-danger btn-sm" (click)="logout()">
+              Выйти
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
