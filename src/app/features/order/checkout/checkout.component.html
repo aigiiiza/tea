@@ -1,16 +1,12 @@
-<!-- Успешная отправка -->
 <div *ngIf="submitSuccess" class="alert alert-success text-center p-5">
   <h3>Спасибо за заказ!</h3>
   <p>Мы свяжемся с вами в ближайшее время.</p>
 </div>
 
-<!-- Форма заказа -->
 <div *ngIf="!submitSuccess">
   <h2 class="text-center mb-4">Оформление заказа</h2>
 
   <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" class="row g-3">
-
-    <!-- Имя -->
     <div class="col-md-6">
       <label class="form-label">Имя *</label>
       <input type="text" class="form-control" formControlName="name">
@@ -24,7 +20,6 @@
       </div>
     </div>
 
-    <!-- Фамилия -->
     <div class="col-md-6">
       <label class="form-label">Фамилия *</label>
       <input type="text" class="form-control" formControlName="last_name">
@@ -38,7 +33,6 @@
       </div>
     </div>
 
-    <!-- Телефон -->
     <div class="col-md-6">
       <label class="form-label">Телефон *</label>
       <input type="tel" class="form-control" formControlName="phone" placeholder="+71234567890">
@@ -52,7 +46,6 @@
       </div>
     </div>
 
-    <!-- Страна -->
     <div class="col-md-6">
       <label class="form-label">Страна *</label>
       <input type="text" class="form-control" formControlName="country">
@@ -62,7 +55,6 @@
       </div>
     </div>
 
-    <!-- Индекс -->
     <div class="col-md-6">
       <label class="form-label">Индекс * (6 цифр)</label>
       <input type="text" class="form-control" formControlName="zip">
@@ -76,7 +68,6 @@
       </div>
     </div>
 
-    <!-- Адрес -->
     <div class="col-md-6">
       <label class="form-label">Адрес *</label>
       <input type="text" class="form-control" formControlName="address">
@@ -90,25 +81,21 @@
       </div>
     </div>
 
-    <!-- Товар (не редактируется) -->
     <div class="col-md-12">
       <label class="form-label">Товар</label>
       <input type="text" class="form-control bg-light" formControlName="product" readonly>
     </div>
 
-    <!-- Комментарий -->
     <div class="col-md-12">
       <label class="form-label">Комментарий к заказу</label>
       <textarea class="form-control" formControlName="comment" rows="3"></textarea>
     </div>
 
-    <!-- Кнопка отправки -->
     <div class="col-12">
       <button type="submit" class="btn btn-primary btn-lg" [disabled]="isSubmitting">
         {{ isSubmitting ? 'Отправка...' : 'Отправить заказ' }}
       </button>
 
-      <!-- Ошибка отправки -->
       <div *ngIf="submitError" class="alert alert-danger mt-3">
         Произошла ошибка. Попробуйте еще раз.
       </div>

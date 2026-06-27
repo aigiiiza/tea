@@ -10,15 +10,12 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Список URL, для которых НЕ нужна авторизация
     const publicUrls = ['/order-tea', '/login', '/register'];
 
-    // Если URL публичный - не добавляем токен
     if (publicUrls.some(url => req.url.includes(url))) {
       return next.handle(req);
     }
 
-    // Для защищённых URL добавляем токен
     const authToken = this.authService.getToken();
     const authReq = req.clone({
       headers: req.headers.set("Authorization", authToken)

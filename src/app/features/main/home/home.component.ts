@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { timer, Subscription } from 'rxjs';
 
@@ -10,7 +10,7 @@ declare var $: any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   private isOnHomePage = true;  // Флаг: находимся ли на главной странице
   private subscription?: Subscription;  // Для отписки от таймера
@@ -25,18 +25,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.showPopup();
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    // Инициализируем аккордеон jQuery UI после загрузки DOM
-    if (typeof $ !== 'undefined' && $('#accordion').length) {
-      $('#accordion').accordion({
-        heightStyle: 'content',   // Высота под содержимое
-        collapsible: true,        // Можно закрыть все пункты
-        active: false,            // Изначально все закрыты
-        animate: 300              // Длительность анимации в миллисекундах
-      });
-    }
   }
 
   ngOnDestroy(): void {

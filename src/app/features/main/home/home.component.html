@@ -1,0 +1,76 @@
+<!-- === КАРУСЕЛЬ (СЛАЙДЕР) === -->
+<div id="carouselWithControls" class="carousel slide mt-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- Слайд 1 -->
+    <div class="carousel-item">
+      <div class="ratio ratio-16x9">
+        <img src="assets/images/banner1.jpg" class="d-block w-100 object-fit-cover" alt="Чайная церемония">
+      </div>
+    </div>
+    <!-- Слайд 2 -->
+    <div class="carousel-item">
+      <div class="ratio ratio-16x9">
+        <img src="assets/images/banner2.png" class="d-block w-100 object-fit-cover" alt="Разнообразие чая">
+      </div>
+    </div>
+    <!-- Слайд 3 (активный по умолчанию) -->
+    <div class="carousel-item active">
+      <div class="ratio ratio-16x9">
+        <img src="assets/images/banner3.png" class="d-block w-100 object-fit-cover" alt="Свежий чай">
+      </div>
+    </div>
+  </div>
+
+  <!-- Кнопки "Влево" и "Вправо" -->
+  <a class="carousel-control-prev" href="#carouselWithControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselWithControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+
+<!-- === АККОРДЕОН (ВОПРОСЫ-ОТВЕТЫ) === -->
+<div class="container mt-5 mb-5">
+  <h2 class="text-center mb-4">Ответы на часто задаваемые вопросы</h2>
+
+  <ngb-accordion [closeOthers]="true" activeIds="static-1">
+    <ngb-panel id="static-1" title="Собираете ли вы подарочные боксы?">
+      <ng-template ngbPanelContent>
+        Да, у нас есть такая услуга. Мы можем собрать подарочный бокс на любой вкус, объем и стоимость!
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="static-2" title="Сколько у вас разновидностей чая?">
+      <ng-template ngbPanelContent>
+        У нас представлено более 50 уникальных сортов чая — от классических черных и зеленых до эксклюзивных травяных и фруктовых смесей.
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="static-3" title="В какой срок осуществляется доставка?">
+      <ng-template ngbPanelContent>
+        Доставка по Москве и области — 1-2 рабочих дня. В другие регионы России — от 3 до 7 дней.
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="static-4" title="У вас обновляется ассортимент?">
+      <ng-template ngbPanelContent>
+        Да! Каждый сезон мы добавляем 5-7 новых сортов, а также ограниченные серии к праздникам.
+      </ng-template>
+    </ngb-panel>
+
+    <ngb-panel id="static-5" title="Какого объема у вас пачки чая?">
+      <ng-template ngbPanelContent>
+        <p>Основные варианты фасовки:</p>
+        <ul>
+          <li>50 г (пробная версия)</li>
+          <li>100 г (стандарт)</li>
+          <li>250 г (премиум)</li>
+        </ul>
+        <p>Для оптовых покупателей доступны упаковки по 1 кг.</p>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>
